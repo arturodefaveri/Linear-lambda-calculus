@@ -1,5 +1,5 @@
 """
-This program computes "linear combinatory closures" of some simple
+This program computes "linear combinatory closures" of some 
 equations. It is based on the following rule for turning a lambda
 term (with a free variable x) into a term built only from the
 combinators B, C, I:
@@ -17,15 +17,15 @@ For example, the term "b x y" (meaning ((b x) y)) is represented as:
     ("APP", ("APP", "b", "x"), "y")
 """
 
-# The letters we treat as variables (things we can abstract over).
+# The letters we treat as variables 
 VARIABLES = {"x", "y", "z"}
 
-# The letters we treat as constants (the combinators themselves).
+# The letters we treat as constants (the combinators)
 CONSTANTS = {"b", "c", "i"}
 
 
 # ----------------------------------------------------------------------
-# Step 1: turn a string like "c(bx)y" into our tuple representation
+# Step 1: turn a string like "c(bx)y" into the tuple representation
 # ----------------------------------------------------------------------
 
 def parse(text):
@@ -86,7 +86,7 @@ def free_variables(term):
 
 
 # ----------------------------------------------------------------------
-# Step 3: the lambda* operator itself
+# Step 3: the lambda* operator 
 # ----------------------------------------------------------------------
 
 def lambda_star(variable, term):
@@ -200,16 +200,16 @@ def close_equation(left_text, right_text):
 # ----------------------------------------------------------------------
 
 axioms = [
-    ("ib", "b"),
-    ("i(bx)", "bx"),
-    ("i(bxy)", "bxy"),
-    ("ic", "c"),
-    ("i(cx)", "cx"),
-    ("i(cxy)", "cxy"),
-    ("ii", "i"),
+    ("bib", "b"),
+    ("bi(bx)", "bx"),
+    ("bi(bxy)", "bxy"),
+    ("bic", "c"),
+    ("bi(cx)", "cx"),
+    ("bi(cxy)", "cxy"),
+    ("bii", "i"),
     ("bix", "bxi"),
     ("c(c(bbx)y)z", "cx(yz)"),
-    ("c(b(bx)y)z", "bcx(cyz)"),
+    ("c(b(bx)y)z", "bx(cyz)"),
     ("b(bxy)z", "bx(byz)"),
     ("c(c(bcx)y)z", "c(cxz)y"),
     ("c(b(cx)y)z", "b(xz)y"),
